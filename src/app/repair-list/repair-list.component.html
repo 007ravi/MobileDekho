@@ -1,0 +1,21 @@
+<h3 *ngIf="repairMobiles.length==0">
+    No items selected for repairing!!
+</h3>
+<div class="container" *ngIf="repairMobiles.length>0">
+    
+    <div class="row">
+        <div class="col-lg-4 mb-4" *ngFor="let mobile of repairMobiles;let i=index">
+<div class="card" style="width: 18rem;">
+    <img style="margin-right: auto;margin-left: auto;"*ngIf="mobile.Company.toUpperCase().includes('APPLE')"class="card-img-top" src="../../assets/iphone.jpg" alt="mobile phone image">
+    <img  *ngIf="mobile.Company.toUpperCase().includes('SAMSUNG')" class="card-img-top" src="../../assets/samsung.jpg" alt="mobile phone image">
+    <img  *ngIf="!mobile.Company.toUpperCase().includes('SAMSUNG') && !mobile.Company.toUpperCase().includes('APPLE')" class="card-img-top" src="../../assets/normalPhone.jpg" alt="mobile phone image">
+    <div class="card-body">
+      <h5 class="card-title">Model: {{mobile.name}}</h5>
+      <p class="card-text">Price: {{mobile.originalPrice}}</p>
+      <p class="card-text">Company: {{mobile.Company.toUpperCase()}}</p>
+      <a  class="btn btn-danger" (click)="Delete(mobile)">Remove</a>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>

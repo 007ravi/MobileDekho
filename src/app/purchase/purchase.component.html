@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 mb-4" *ngFor="let mobile of mobiles;let i=index">
+<div class="card" style="width: 18rem;">
+    <img style="margin-right: auto;margin-left: auto;"*ngIf="mobile.Company.toUpperCase().includes('APPLE')"class="card-img-top" src="../../assets/iphone.jpg" alt="mobile phone image">
+    <img  *ngIf="mobile.Company.toUpperCase().includes('SAMSUNG')" class="card-img-top" src="../../assets/samsung.jpg" alt="mobile phone image">
+    <img  *ngIf="!mobile.Company.toUpperCase().includes('SAMSUNG') && !mobile.Company.toUpperCase().includes('APPLE')" class="card-img-top" src="../../assets/normalPhone.jpg" alt="mobile phone image">
+    <div class="card-body">
+      <h5 class="card-title">{{mobile.name}}</h5>
+      <p class="card-text">Price: {{mobile.originalPrice}}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- <div class="card">
+<div class="card" style="width: 18rem;" *ngFor="let mobile of mobiles;let i=index">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h5 class="card-title">{{mobile.name}}</h5>
+      <p class="card-text">Price: {{mobile.originalPrice}}</p>  
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </div> -->

@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid" class="row">
+    
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <select
+            (change)="selectOptionMobile($event)"
+            [(ngModel)]="selectedCompany"
+            class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>All Brands</option>
+                <option [value]="name" *ngFor="let name of mobileName;let i=index">{{name}}</option>
+              </select>
+          </li>
+           <li class="nav-item">
+            <select  (change)="selectOptionPrice($event)"
+            [(ngModel)]="selectedPrice"
+             class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>All Prices</option>
+                <option [value]="price" *ngFor="let price of mobilePrice;let i=index">{{price}}</option>
+              
+              </select>
+          </li> 
+          <li style="position:absolute;right:10px;">
+            <button class="btn btn-success px-4" type="button" (click)="goToRepair()">Go To repair</button>
+          </li>
+
+        </ul>
+    </div>
+  </nav>
+
+<div *ngIf="loader==true">
+  <button class="btn btn-primary" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
+</div>
+
+
+
+<div class="container" *ngIf="loader!=true">
+    
+    <div class="row">
+        <div class="col-lg-4 mb-4" *ngFor="let mobile of mobiles;let i=index">
+<div class="card" style="width: 18rem;">
+    <img style="margin-right: auto;margin-left: auto;"*ngIf="mobile.Company.toUpperCase().includes('APPLE')"class="card-img-top" src="../../assets/iphone.jpg" alt="mobile phone image">
+    <img  *ngIf="mobile.Company.toUpperCase().includes('SAMSUNG')" class="card-img-top" src="../../assets/samsung.jpg" alt="mobile phone image">
+    <img  *ngIf="!mobile.Company.toUpperCase().includes('SAMSUNG') && !mobile.Company.toUpperCase().includes('APPLE')" class="card-img-top" src="../../assets/normalPhone.jpg" alt="mobile phone image">
+    <div class="card-body">
+      <h5 class="card-title">Model: {{mobile.name}}</h5>
+      <p class="card-text">Price: {{mobile.originalPrice}}</p>
+      <p class="card-text">Company: {{mobile.Company.toUpperCase()}}</p>
+      <a  class="btn btn-primary" (click)="Repair(mobile)">Repair</a>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- <div class="card">
+<div class="card" style="width: 18rem;" *ngFor="let mobile of mobiles;let i=index">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h5 class="card-title">{{mobile.name}}</h5>
+      <p class="card-text">Price: {{mobile.originalPrice}}</p>  
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </div> -->

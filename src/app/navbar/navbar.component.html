@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand"  [routerLink]="['/purchase']">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"   [routerLink]="['/purchase']">Purchase</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/sell">Sell</a>
+        </li>
+
+        <li class="nav-item" *ngIf="this.loginUser=='login'">
+          <a class="nav-link"  routerLink="/repair">Repair</a>
+        </li>
+      </ul>
+      <!-- <form class="d-flex" *ngIf="(this.loginUser=='logout' || this.loginUser=='signup') && this.loginUser!='login'">
+        <button class="btn btn-info px-4" type="button" [routerLink]="['/signup']">SignUp</button>
+      </form> -->
+      <form class="d-flex" *ngIf="this.loginUser=='logout' ">
+        <button class="btn btn-info px-4" type="button" [routerLink]="['/login']">Login</button>
+      </form>
+      <form class="d-flex" *ngIf="this.loginUser=='login'">
+        <button class="btn btn-info px-4" type="button" (click)="logout()">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
